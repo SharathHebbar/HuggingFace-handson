@@ -4,8 +4,6 @@ from langchain.llms import HuggingFaceHub
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 
-from models import llms
-
 class UserInterface():
 
     def __init__(self, ):
@@ -62,12 +60,29 @@ class UserInterface():
             if not self.API_KEY.startswith('hf_'):
                 st.warning('Please enter your API key!', icon='⚠')
                 text_input_visibility = True
+            else:
+                text_input_visibility = False
             
+
+            if "messages" not in st.session_state:
+                    st.session_state.messages = []
+
+            st.write(f"You are using {self.models} model")
+
+            for message in st.session_state.messages:
+                with st.chat_message(message.get('role')):
+                    st.write(message.get("content"))
             
-            st.subheader("Context")
-            context = st.chat_input(disabled=text_input_visibility)
-            st.subheader("Question")
-            question = st.chat_input(disabled=text_input_visibility)
+            context = st.sidebar.text_input(
+                 label="Context",
+                 help="Context lets you know on what the answer should be generated"
+                 )
+
+        
+            question = st.chat_input(
+                 key="question",
+                 disabled=text_input_visibility
+            )
 
 
             template = """
@@ -85,21 +100,45 @@ class UserInterface():
                 ]
             )
             llm = HuggingFaceHub(
-                repo_id = self.model_name,
+                repo_id = self.models,
                 model_kwargs = self.model_kwargs
             )
 
-            llm_chain = LLMChain(
-                prompt=prompt,
-                llm=llm,
-            )
+            if question:
+                llm_chain = LLMChain(
+                    prompt=prompt,
+                    llm=llm,
+                )
 
-            result = llm_chain.run({
-                "question": question,
-                "context": context
-            })
+                result = llm_chain.run({
+                    "question": question,
+                    "context": context
+                })
 
-            st.markdown(result)
+                if "Out of Context" in result:
+                    result = "Out of Context"
+                st.session_state.messages.append(
+                    {
+                        "role":"user",
+                        "content": f"Context: {context}\n\nQuestion: {question}"
+                    }
+                )
+                with st.chat_message("user"):
+                    st.write(f"Context: {context}\n\nQuestion: {question}")
+                
+                if question.lower() == "clear":
+                    del st.session_state.messages
+                    return
+                
+                st.session_state.messages.append(
+                    {
+                        "role": "assistant",
+                        "content": result
+                    }
+                )
+                with st.chat_message('assistant'):
+                    st.markdown(result)
+
         except Exception as e:
             st.error(e, icon="🚨")
 
