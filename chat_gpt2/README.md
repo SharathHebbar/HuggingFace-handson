@@ -1,3 +1,20 @@
+# ChatGPT2
+GPT2 small is fine tuned on ultrachat_200k dataset to create ChatGPT2.
+
+The models repository is in HuggingFace
+
+Link: https://huggingface.co/Sharathhebbar24/chat_gpt2/tree/main
+
+1. The model was trained on following Specs
+- Nvidia RTX 3050 4GB VRAM
+- 16GB RAM
+- Intel i5 12th gen 12500H
+
+2. It took around 7:26:57 to train the model for 3 epochs with a loss of 2.28.
+
+3. It was trained on FP16 bit architecture with a batch size of 4.
+
+
 ---
 license: apache-2.0
 datasets:
