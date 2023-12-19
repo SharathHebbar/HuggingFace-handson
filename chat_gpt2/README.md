@@ -38,22 +38,22 @@ prompt.
 ### To use this model
 
 ```python
->>> from transformers import AutoTokenizer, AutoModelForCausalLM
->>> model_name = "Sharathhebbar24/chat_gpt2"
->>> model = AutoModelForCausalLM.from_pretrained(model_name)
->>> tokenizer = AutoTokenizer.from_pretrained("gpt2")
->>> def generate_text(prompt):
->>>  inputs = tokenizer.encode(prompt, return_tensors='pt')
->>>  outputs = mod1.generate(inputs, max_length=64, pad_token_id=tokenizer.eos_token_id)
->>>  generated = tokenizer.decode(outputs[0], skip_special_tokens=True)
->>>  return generated[:generated.rfind(".")+1]
->>> prompt = """
->>> user: what are you?
->>> assistant: I am a Chatbot intended to give a python program
->>> user: hmm,  can you write a python program to print Hii Heloo
->>> assistant: Sure Here is a python code.\n print("Hii Heloo")
->>> user: Can you write a Linear search program in python
->>> """
->>> res = generate_text(prompt)
->>> res
+from transformers import AutoTokenizer, AutoModelForCausalLM
+model_name = "Sharathhebbar24/chat_gpt2"
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
+def generate_text(prompt):
+ inputs = tokenizer.encode(prompt, return_tensors='pt')
+ outputs = mod1.generate(inputs, max_length=64, pad_token_id=tokenizer.eos_token_id)
+ generated = tokenizer.decode(outputs[0], skip_special_tokens=True)
+ return generated[:generated.rfind(".")+1]
+prompt = """
+user: what are you?
+assistant: I am a Chatbot intended to give a python program
+user: hmm,  can you write a python program to print Hii Heloo
+assistant: Sure Here is a python code.\n print("Hii Heloo")
+user: Can you write a Linear search program in python
+"""
+res = generate_text(prompt)
+res
 ```
