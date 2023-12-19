@@ -14,15 +14,9 @@ Link: https://huggingface.co/Sharathhebbar24/chat_gpt2/tree/main
 
 3. It was trained on FP16 bit architecture with a batch size of 4.
 
-
----
-license: apache-2.0
-datasets:
-- HuggingFaceH4/ultrachat_200k
-language:
-- en
-pipeline_tag: text-generation
----
+| license | datasets | language |
+| ------- | -------- | -------- |
+| apache-2.0 | HuggingFaceH4/ultrachat_200k | en |
 
 This model is a finetuned version of ```gpt2``` using ```HuggingFaceH4/ultrachat_200k```
 
