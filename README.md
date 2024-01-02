@@ -46,3 +46,8 @@
 ### Object Detection
 
 1. [Table-Detection](https://github.com/SharathHebbar/Table-detection-using-Transformers)
+
+### Image Segmentation
+
+### Image Captioning
+
