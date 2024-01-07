@@ -1,13 +1,15 @@
 # Convo Bot using GPT2-small
 
-GPT2 small is fine tuned on vicgalle/alpaca-gpt4 dataset to create ChatGPT2.
+GPT2 small is fine-tuned on vicgalle/alpaca-gpt4 dataset to create ChatGPT2.
 
-The models repository is in HuggingFace
+The model achieved Perplexity: 4.744423275536728
 
-Link to the model: https://huggingface.co/Sharathhebbar24/convo_bot_gpt2/tree/main
-Model Usage: https://huggingface.co/Sharathhebbar24/convo_bot_gpt2
+The model's repository is in HuggingFace
 
-1. The model was trained on following Specs
+Link to the model: https://huggingface.co/Sharathhebbar24/convo_bot_gpt_v1/tree/main
+Model Usage: https://huggingface.co/Sharathhebbar24/convo_bot_gpt_v1
+
+1. The model was trained on the following Specs
 - Nvidia RTX 3050 4GB VRAM
 - 16GB RAM
 - Intel i5 12th gen 12500H
@@ -53,6 +55,7 @@ def generate_text(prompt):
  Below is an instruction that describes a task. Write a response that appropriately completes the request. 
  ### Instruction: Who is the world's most famous painter? 
  ###
+ """
 res = generate_text(prompt)
 res
 ```
