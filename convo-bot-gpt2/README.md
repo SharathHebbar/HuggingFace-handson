@@ -11,7 +11,7 @@ GPT2 small is fine-tuned on vicgalle/alpaca-gpt4 dataset to create ChatGPT2.
 - Nvidia RTX 3050 4GB VRAM
 - 16GB RAM
 - Intel i5 12th gen 12500H
-3. It took around 4:25:42 to train the model for 3 epochs with a loss of 1.57.
+3. It took around 5:49:47 to train the model for 3 epochs with a loss of 1.57.
 4. The model achieved Perplexity: 4.744423275536728
 5. It was trained on FP16 bit architecture with a batch size of 2.
 
