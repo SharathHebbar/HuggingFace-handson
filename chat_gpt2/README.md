@@ -1,24 +1,23 @@
 # ChatGPT2
-GPT2 small is fine tuned on ultrachat_200k dataset to create ChatGPT2.
+GPT2 small is fine-tuned on the ultrachat_200k dataset to create ChatGPT2.
 
-The models repository is in HuggingFace
+## Technical Details
+1. The model's repository is in HuggingFace Link: https://huggingface.co/Sharathhebbar24/chat_gpt2/tree/main
 
-Link: https://huggingface.co/Sharathhebbar24/chat_gpt2/tree/main
-
-1. The model was trained on following Specs
+2. The model was trained on the following Specs
 - Nvidia RTX 3050 4GB VRAM
 - 16GB RAM
 - Intel i5 12th gen 12500H
 
-2. It took around 7:26:57 to train the model for 3 epochs with a loss of 2.28.
+3. It took around 7:26:57 to train the model for 3 epochs with a loss of 2.28.
 
-3. It was trained on FP16 bit architecture with a batch size of 4.
+4. It was trained on FP16 bit architecture with a batch size of 4.
 
 | license | datasets | language |
 | ------- | -------- | -------- |
 | apache-2.0 | HuggingFaceH4/ultrachat_200k | en |
 
-This model is a finetuned version of ```gpt2``` using ```HuggingFaceH4/ultrachat_200k```
+5. This model is a finetuned version of ```gpt2``` using ```HuggingFaceH4/ultrachat_200k```
 
 ## Model description
 
@@ -41,7 +40,7 @@ prompt.
 from transformers import AutoTokenizer, AutoModelForCausalLM
 model_name = "Sharathhebbar24/chat_gpt2"
 model = AutoModelForCausalLM.from_pretrained(model_name)
-tokenizer = AutoTokenizer.from_pretrained("gpt2")
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 def generate_text(prompt):
  inputs = tokenizer.encode(prompt, return_tensors='pt')
  outputs = mod1.generate(inputs, max_length=64, pad_token_id=tokenizer.eos_token_id)
